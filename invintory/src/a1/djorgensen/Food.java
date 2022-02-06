@@ -3,7 +3,7 @@ package a1.djorgensen;
 public class Food extends Consumable {
     float healthGain;
 
-    public Food(float healthGain) {
+    public Food() {
         super();
         this.healthGain = 0;
     }

@@ -14,12 +14,14 @@ public class Main {
         FoodItems[] foodItems = FoodItems.values();
         Tools[] tools = Tools.values();
         ToolUses[] toolUses = ToolUses.values();
+        Armors[] armors = Armors.values();
+        Weapons[] weapons = Weapons.values();
 
         System.out.print("How many items do you want?");
         int itemCnt = Integer.parseInt(scan.nextLine());
 
         for (int i = 0; i < itemCnt; i++) {
-            int type = ran.nextInt(2);
+            int type = ran.nextInt(4);
             switch (type) {
                 case 0 -> {
                     int foodIndex = ran.nextInt(foodItems.length);
@@ -39,6 +41,24 @@ public class Main {
                     String use = toolUses[toolIndex].toString();
                     Tool tmpTool = new Tool(toolName, toolPrice, toolQty, use);
                     items.add(tmpTool);
+                }
+                case 2 -> {
+                    int armorIndex = ran.nextInt(armors.length);
+                    String armorName = armors[armorIndex].toString();
+                    float armorPrice = ran.nextFloat(2000);
+                    int armorQty = ran.nextInt(3);
+                    float defence = ran.nextFloat(1000);
+                    Armor tmpArmor = new Armor(armorName, armorPrice, armorQty, defence);
+                    items.add(tmpArmor);
+                }
+                case 3 -> {
+                    int weaponIndex = ran.nextInt(weapons.length);
+                    String weaponName = weapons[weaponIndex].toString();
+                    float weaponPrice = ran.nextFloat(1200);
+                    int weaponQty = ran.nextInt(5);
+                    float damage = ran.nextFloat(1000);
+                    Armor tmpWeapon = new Armor(weaponName, weaponPrice, weaponQty, damage);
+                    items.add(tmpWeapon);
                 }
             }
         }
