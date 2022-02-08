@@ -11,7 +11,7 @@ public class Main {
         Scanner scan = new Scanner(System.in);
         Random ran = new Random();
 
-        System.out.print("Do you want a [S]ingle Sort or a [D]ual sort? ");
+        System.out.print("Do you want a [S]ingle Sort, a [D]ual sort, or a [Q]uad Sort? ");
         char selection = scan.next().charAt(0);
 
         System.out.print("How many items do you want to sort? ");
@@ -36,6 +36,9 @@ public class Main {
             case 'd':
             case 'D':
                 DualSort(items);
+            case 'q':
+            case 'Q':
+                QuadSort(items);
         }
     }
 
@@ -77,6 +80,41 @@ public class Main {
             System.out.println(i);
         }
         System.out.println("Dual sort took: " + duration);
+    }
 
+    public static void QuadSort(Item[] items) throws InterruptedException {
+        int fourth = Math.round(items.length / 4f);
+        ThreadSort t1 = new ThreadSort(items, 0, fourth);
+        ThreadSort t2 = new ThreadSort(items, fourth, fourth * 2);
+        ThreadSort t3 = new ThreadSort(items, fourth * 2, fourth * 3);
+        ThreadSort t4 = new ThreadSort(items, fourth * 3, items.length);
+        long startTime = System.nanoTime();
+        t1.start();
+        t2.start();
+        t3.start();
+        t4.start();
+
+        t1.join();
+        t2.join();
+        t3.join();
+        t4.join();
+
+        MergeSort m1 = new MergeSort(t1.gettItems(), t2.gettItems());
+        MergeSort m2 = new MergeSort(t3.gettItems(), t4.gettItems());
+        m1.start();
+        m2.start();
+        m1.join();
+        m2.join();
+
+        MergeSort m3 = new MergeSort(m1.getSortedItems(), m2.getSortedItems());
+        m3.start();
+        m3.join();
+
+        long endTime = System.nanoTime();
+        long duration = (endTime - startTime) / 1000000;
+        for (Item i : m3.getSortedItems()) {
+            System.out.println(i);
+        }
+        System.out.println("Dual sort took: " + duration);
     }
 }
