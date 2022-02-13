@@ -2,16 +2,20 @@ package a3.djorgensen.contactsapp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ListViewController {
@@ -22,6 +26,10 @@ public class ListViewController {
     GridPane newContact;
     @FXML
     TextField txtFirstName, txtLastName, txtPhone;
+    @FXML
+    VBox vboxMain;
+    @FXML
+    MenuItem btnThemeDefault, btnThemeBlue, btnThemeGreen;
 
     ContactComparator comparator = new ContactComparator();
 
@@ -85,6 +93,23 @@ public class ListViewController {
             txtLastName.setText(selectedContact.getLastName());
             txtPhone.setText(selectedContact.getPhone());
             onDeleteContact();
+        }
+    }
+
+    @FXML
+    protected void onThemeChange(final ActionEvent event) {
+        String defaultCSS = Objects.requireNonNull(getClass().getResource("Default.css")).toString();
+        String blueCSS = Objects.requireNonNull(getClass().getResource("Blue.css")).toString();
+        String greenCSS = Objects.requireNonNull(getClass().getResource("Green.css")).toString();
+        vboxMain.getScene().getStylesheets().removeAll(defaultCSS, blueCSS, greenCSS);
+
+        Object source = event.getSource();
+        if (btnThemeDefault.equals(source)) {
+            vboxMain.getScene().getStylesheets().add(defaultCSS);
+        } else if (btnThemeBlue.equals(source)) {
+            vboxMain.getScene().getStylesheets().add(blueCSS);
+        } else if (btnThemeGreen.equals(source)) {
+            vboxMain.getScene().getStylesheets().add(greenCSS);
         }
     }
 
