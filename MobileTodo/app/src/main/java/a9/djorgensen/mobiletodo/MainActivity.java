@@ -120,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements OnItemListener{
     public void onItemClicked(int position) {
         try {
             String path = URLEncoder.encode(items.get(position).getDesc(), String.valueOf(StandardCharsets.UTF_8));
-            DatabaseReference ref = database.getReference(selectedTab);
+            DatabaseReference ref = database.getReference(selectedTab + "/" + path);
             ref.removeValue();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

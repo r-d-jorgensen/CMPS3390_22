@@ -5,4 +5,5 @@
     <string name="work">Work</string>
     <string name="add">Add</string>
     <string name="todo_item">Todo Item</string>
+    <string name="groceries">Groceries</string>
 </resources>
