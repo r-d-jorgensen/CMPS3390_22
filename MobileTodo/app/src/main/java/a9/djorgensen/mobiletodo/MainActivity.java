@@ -28,13 +28,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements OnItemListener{
+public class MainActivity extends AppCompatActivity implements OnItemListener {
 
     private TabLayout tabLists;
     private EditText txtTodoItem;
     private RecyclerView listItems;
     private String selectedTab;
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<Item> items = new ArrayList<>();
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
 
     @Override

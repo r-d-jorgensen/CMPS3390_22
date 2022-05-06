@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Farm For Winter</string>
+    <string name="introText">Ready to Farm For the Winter?</string>
+    <string name="play">Play</string>
+    <string name="placeholder">#</string>
+    <string name="buy">Buy</string>
+    <string name="money">Money: $</string>
+    <string name="harvested">Harvested: $</string>
+    <string name="winterProgressBarText">Time Left Till Winter</string>
+    <string name="product">Product</string>
+    <string name="cost">Cost</string>
+    <string name="purchase">Purchase</string>
+    <string name="grow">Grow</string>
+    <string name="potatoes">Potatoes</string>
+    <string name="carrots">Carrots</string>
+    <string name="chickens">Chickens</string>
+    <string name="pigs">Pigs</string>
+    <string name="cows">Cows</string>
+    <string name="highScores">High Scores</string>
+    <string name="playAgain">Play Again?</string>
+</resources>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "497444304216",
+    "project_id": "farm-for-winter",
+    "storage_bucket": "farm-for-winter.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:497444304216:android:cf95476bdbb09ac4d1e12d",
+        "android_client_info": {
+          "package_name": "a11.djorgensen.FarmForWinter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "497444304216-88i4cjj1tp3sikooc7i8mi7h663lsnuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjtXZL4cTqooY_iSjFgpIzB7HRAZ8DLQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "497444304216-88i4cjj1tp3sikooc7i8mi7h663lsnuj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
