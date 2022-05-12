@@ -44,7 +44,8 @@ public class EndScreenActivity extends AppCompatActivity {
                 scores.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     HashMap value = (HashMap) dataSnapshot.getValue();
-                    Score tmp = new Score(value.get("value").toString());
+                    HashMap userName = (HashMap) dataSnapshot.getValue();
+                    Score tmp = new Score(userName.get("userName").toString(), value.get("value").toString());
                     scores.add(tmp);
                 }
                 Objects.requireNonNull(listScores.getAdapter()).notifyDataSetChanged();

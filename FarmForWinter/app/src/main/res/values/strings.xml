@@ -18,4 +18,5 @@
     <string name="cows">Cows</string>
     <string name="highScores">High Scores</string>
     <string name="playAgain">Play Again?</string>
+    <string name="userPrompt">What is Your Name?</string>
 </resources>

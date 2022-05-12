@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.util.List;
 
 public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHolder> {
@@ -32,7 +30,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.txtItem.setText(scores.get(position).getValue());
+        holder.txtItem.setText(scores.get(position).toString());
     }
 
     @Override
@@ -45,7 +43,7 @@ public class RecycleAdapter extends RecyclerView.Adapter<RecycleAdapter.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            txtItem = itemView.findViewById(R.id.txtItemView);
+            txtItem = itemView.findViewById(R.id.txtUserScore);
         }
     }
 }

@@ -9,6 +9,7 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
+    private String userName;
     private final FirebaseDatabase database = FirebaseDatabase.getInstance();
     private final float totalCycles = 15;
     private float growthCycle = 0;
@@ -34,6 +36,8 @@ public class GameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_loop);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        Intent intent = getIntent();
+        userName = intent.getStringExtra("userName");
         this.txtMoney = findViewById(R.id.txtMoney);
         this.txtHarvestedValue = findViewById(R.id.txtHarvestedValue);
         this.pBarWinter = findViewById(R.id.pBarWinter);
@@ -62,7 +66,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     //Grow all produce that have a value
-    public void onGrowClicked(View view) throws InterruptedException {
+    public void onGrowClicked(View view) {
         growthCycle++;
 
         //check, grow and harvest each item
@@ -80,7 +84,7 @@ public class GameActivity extends AppCompatActivity {
 
         //End Game Wrap-up
         if (growthCycle == totalCycles) {
-            Score score = new Score(String.valueOf(money));
+            Score score = new Score(userName, String.valueOf(money));
             String user = "User: " + Math.round(Math.random() * 100);
             try {
                 String path = URLEncoder.encode(user, String.valueOf(StandardCharsets.UTF_8));
@@ -120,8 +124,15 @@ public class GameActivity extends AppCompatActivity {
             default: return;
         }
 
-        //check if can buy then update
-        if (money < harvestableArrayList.get(itemId).getCostNow()) return;
+        //check if can buy then update else tell user
+        if (money < harvestableArrayList.get(itemId).getCostNow()) {
+            Snackbar snackbar = Snackbar.make(txtMoney,
+                    "Not Enough Money to Buy",
+                    Snackbar.LENGTH_LONG);
+            snackbar.setDuration(1000);
+            snackbar.show();
+            return;
+        }
         if (harvestableArrayList.get(itemId).getHarvestTimeLeft() > .25) return;
         money -= harvestableArrayList.get(itemId).getCostNow();
         txtMoney.setText(String.valueOf(money));

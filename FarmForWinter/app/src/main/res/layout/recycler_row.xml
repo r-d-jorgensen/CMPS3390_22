@@ -16,13 +16,14 @@
         app:contentPadding="8dp">
 
         <TextView
-            android:id="@+id/txtItemView"
+            android:id="@+id/txtUserScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="9"
             android:gravity="center"
-            android:text="TextView"
+            android:text="@string/placeholder"
+            android:textColor="#FF8A80"
             android:textSize="24sp"
             app:cardBackgroundColor="@color/design_default_color_primary" />
 
